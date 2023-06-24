@@ -1,6 +1,8 @@
 package Syn_Framework.Syn_Framework;
 
+import java.io.IOException;
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -11,22 +13,19 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class ProTest {
+public class ProTest extends BaseTest {
 	 
-  @Test
-  public void login() throws InterruptedException {
+  @Test(dataProvider = "data")
+  public void login(HashMap<String, String> input) throws InterruptedException, IOException {
 	 
-      ChromeOptions op = new ChromeOptions();
-	  op.addArguments("start-maximized");
-	  System.setProperty("webdriver.chrome.driver", "E:\\Software\\Selenium\\chromedriver.exe");
-	  WebDriver driver = new ChromeDriver(op);
-	  LoginTest lt = new LoginTest(driver);
-	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+	  WebDriver driver  = startdriver();
 	  String item = "ZARA COAT 3";
+	  LoginTest lt = new LoginTest(driver);
 	  lt.go();
-	  lt.login("nikhilravi9847@gmail.com","1DA@17mca");
+	  lt.login(input.get("email"),input.get("pass"));
 	  
 	  ProductPage p = new ProductPage(driver);
 	  List<WebElement> products = p.prolist();
@@ -50,16 +49,24 @@ public class ProTest {
 		   }
 	   }
 	  
-	  
-	   
-	   
-	   
+	 	         
        String confirm = driver.findElement(By.xpath("//h1[@class='hero-primary']")).getText();
        System.out.println(confirm);
        Assert.assertTrue(confirm.equalsIgnoreCase("Thankyou for the order."));
-	   //<h1 _ngcontent-pte-c39="" class="hero-primary" style="text-transform: uppercase; font-size: 28px; color: #283375; margin-top: 9px;"> Thankyou for the order. </h1>
-	 driver.quit();
+	  
 	 
 	  
   }
+  
+  @DataProvider
+  public Object[][] data()
+  {
+	 
+	  HashMap<String, String> map = new HashMap<>();
+	  map.put("email","nikhilravi9847@gmail.com");
+	  map.put("pass", "1DA@17mca");
+	  
+	  return new Object[][] {{map}};
+  }
+  
 }

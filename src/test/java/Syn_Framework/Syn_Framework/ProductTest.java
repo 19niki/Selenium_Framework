@@ -1,9 +1,14 @@
 package Syn_Framework.Syn_Framework;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,14 +16,18 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.google.common.io.Files;
+
 public class ProductTest {
-	 
-  @Test
-  public void login() {
+	
+	 WebDriver driver;
+  @Test(dataProvider = "data")
+  public void login(HashMap<String, String> input) {
 	  ChromeOptions op;
-		 WebDriver driver;
+		
 	  op = new ChromeOptions();
 	  op.addArguments("start-maximized");
 	// op.addArguments("-headless");
@@ -27,8 +36,8 @@ public class ProductTest {
 	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 	  String item = "ZARA COAT 3";
 	  driver.get("https://rahulshettyacademy.com/client/");
-	  driver.findElement(By.id("userEmail")).sendKeys("nikhilravi9847@gmail.com");
-	  driver.findElement(By.id("userPassword")).sendKeys("1DA@17mca");
+	  driver.findElement(By.id("userEmail")).sendKeys(input.get("email"));
+	  driver.findElement(By.id("userPassword")).sendKeys(input.get("pass"));
 	  driver.findElement(By.id("login")).click();
 	  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
 	  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'mb-3')]/div/div/h5/b")));
@@ -84,6 +93,26 @@ public class ProductTest {
        Assert.assertTrue(confirm.equalsIgnoreCase("Thankyou for the order."));
 	   //<h1 _ngcontent-pte-c39="" class="hero-primary" style="text-transform: uppercase; font-size: 28px; color: #283375; margin-top: 9px;"> Thankyou for the order. </h1>
 	 driver.quit();
+	  
+  }
+  @DataProvider
+  public Object[][] data()
+  {
+	 
+	  HashMap<String, String> map = new HashMap<>();
+	  map.put("email","nikhilravi9847@gmail.com");
+	  map.put("pass", "1DA@17mca");
+	  
+	  return new Object[][] {{map}};
+  }
+  
+  public File getscreenshot(String test) throws IOException
+  {
+	  File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	  File des = new File (System.getProperty("user.dir")+ "//reports//" + test +".png");
+	  Files.copy(src, des);
+	  return des;
+	  
 	  
   }
 }

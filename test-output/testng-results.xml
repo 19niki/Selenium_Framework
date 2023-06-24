@@ -2,16 +2,23 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-06-23T21:48:26 IST" name="Default suite" finished-at="2023-06-23T21:48:45 IST" duration-ms="19198">
+  <suite started-at="2023-06-24T14:22:53 IST" name="Default suite" finished-at="2023-06-24T14:23:21 IST" duration-ms="28023">
     <groups>
     </groups>
-    <test started-at="2023-06-23T21:48:26 IST" name="Default test" finished-at="2023-06-23T21:48:45 IST" duration-ms="19198">
-      <class name="Syn_Framework.Syn_Framework.ProTest">
-        <test-method signature="login()[pri:0, instance:Syn_Framework.Syn_Framework.ProTest@750e2b97]" started-at="2023-06-23T21:48:26 IST" name="login" finished-at="2023-06-23T21:48:45 IST" duration-ms="19139" status="PASS">
+    <test started-at="2023-06-24T14:22:53 IST" name="Default test" finished-at="2023-06-24T14:23:21 IST" duration-ms="28023">
+      <class name="Syn_Framework.Syn_Framework.ProductTest">
+        <test-method signature="login(java.util.HashMap)[pri:0, instance:Syn_Framework.Syn_Framework.ProductTest@53fe15ff]" started-at="2023-06-24T14:22:53 IST" name="login" data-provider="data" finished-at="2023-06-24T14:23:21 IST" duration-ms="27966" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{pass=1DA@17mca, email=nikhilravi9847@gmail.com}]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-      </class> <!-- Syn_Framework.Syn_Framework.ProTest -->
+      </class> <!-- Syn_Framework.Syn_Framework.ProductTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
