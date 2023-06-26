@@ -67,8 +67,8 @@ public class ProductTest {
 	  Assert.assertTrue(itemsel.matches(item));
 	  
 	  driver.findElement(By.xpath("//div/ul/li/button")).click();
-	  Thread.sleep(3000);
-	  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@class='btnn action__submit ng-star-inserted']")));
+	
+	  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@class='btnn action__submit ng-star-inserted']")));
 	   driver.findElement(By.xpath("//input[@placeholder='Select Country']")).sendKeys("ind");
 	   
 	   try
@@ -88,7 +88,7 @@ public class ProductTest {
 	   catch (Exception e) {
 			// TODO: handle exception
 		}
-	   Thread.sleep(5000);
+	   
 	   driver.findElement(By.xpath("//a[@class='btnn action__submit ng-star-inserted']")).click();
        String confirm = driver.findElement(By.xpath("//h1[@class='hero-primary']")).getText();
        System.out.println(confirm);
