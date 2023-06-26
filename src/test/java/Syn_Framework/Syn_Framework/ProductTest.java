@@ -88,6 +88,8 @@ public class ProductTest {
 	   catch (Exception e) {
 			// TODO: handle exception
 		}
+	  
+	  Thread.sleep(5000);
 	   wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@class='btnn action__submit ng-star-inserted']")));
 	   driver.findElement(By.xpath("//a[@class='btnn action__submit ng-star-inserted']")).click();
        String confirm = driver.findElement(By.xpath("//h1[@class='hero-primary']")).getText();
