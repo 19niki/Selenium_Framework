@@ -67,7 +67,7 @@ public class ProductTest {
 	  Assert.assertTrue(itemsel.matches(item));
 	  
 	  driver.findElement(By.xpath("//div/ul/li/button")).click();
-	  
+	  Thread.sleep(3000);
 	  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@class='btnn action__submit ng-star-inserted']")));
 	   driver.findElement(By.xpath("//input[@placeholder='Select Country']")).sendKeys("ind");
 	   
