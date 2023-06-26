@@ -6,10 +6,12 @@
       <class name="Syn_Framework.Syn_Framework.ProTest"/>
     </classes>
   </test>
-   <!-- Test -->
+  </suite> 
+   <!-- 
    <test thread-count="5" name="carttest">
     <classes>  
       <class name="Syn_Framework.Syn_Framework.ProductTest"/>
     </classes>
   </test>
-</suite> <!-- Suite -->
+
+ -->
