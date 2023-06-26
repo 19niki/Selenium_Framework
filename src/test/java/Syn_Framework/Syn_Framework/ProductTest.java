@@ -25,12 +25,12 @@ public class ProductTest {
 	
 	 WebDriver driver;
   @Test(dataProvider = "data")
-  public void login(HashMap<String, String> input) {
+  public void login(HashMap<String, String> input) throws InterruptedException {
 	  ChromeOptions op;
 		
 	  op = new ChromeOptions();
 	  op.addArguments("start-maximized");
-	// op.addArguments("-headless");
+	  //op.addArguments("-headless");
 	  driver = new ChromeDriver(op);
 	  LoginTest lt = new LoginTest(driver);
 	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
@@ -57,7 +57,9 @@ public class ProductTest {
 		  	  
 	 }
 	 wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#toast-container")));
-	 wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(".ng-animating"))));
+	 Thread.sleep(5000);
+	 //wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(".ng-animating"))));
+	 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@routerlink='/dashboard/cart']")));
 	  driver.findElement(By.xpath("//button[@routerlink='/dashboard/cart']")).click();
 	  
 	  String itemsel = driver.findElement(By.xpath("//div[@class='cartSection']/h3")).getText();

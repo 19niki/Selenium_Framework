@@ -5,7 +5,7 @@
     <classes>
       <class name="Syn_Framework.Syn_Framework.ProductTest">
         <methods>
-          <include name="login"/>
+          <include name="login" invocation-numbers="0"/>
         </methods>
       </class> <!-- Syn_Framework.Syn_Framework.ProductTest -->
     </classes>
